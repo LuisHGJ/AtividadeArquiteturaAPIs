@@ -1,0 +1,37 @@
+@url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGaWxtZXMgQVBJIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3Nzc0MjQ2NTR9.ehqnvdidzJHRg_vRKIbwrJ5ko4oJfiaOym60GXP1gZ0
+
+POST {{url}}/categorias
+Authorization:  Bearer {{token}}
+Content-Type: application/json
+
+{
+    "idUsuario": 1,
+    "descricao": "Salario",
+    "tipo": "Entrada",
+    "valor": 5000.00
+}
+
+###
+GET {{url}}/categorias
+Authorization:  Bearer {{token}}
+
+###
+PUT {{url}}/categorias/1
+Authorization:  Bearer {{token}}
+Content-Type: application/json
+
+{
+    "idUsuario": 1,
+    "descricao": "Mercado",
+    "tipo": "Saida",
+    "valor": 600.00
+}
+
+###
+GET {{url}}/categorias/1
+Authorization:  Bearer {{token}}
+
+###
+DELETE {{url}}/categorias/1
+Authorization:  Bearer {{token}}
