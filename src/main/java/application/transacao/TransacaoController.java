@@ -35,6 +35,15 @@ public class TransacaoController {
     private TransacaoService transacaoService;
 
     @PostMapping
+    @Operation(summary = "Cria uma nova transação")
+    @ApiResponse(
+        responseCode = "200",
+        description = "Transação criada com sucesso",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = TransacaoDTO.class)
+        )
+    )
     public TransacaoDTO insert(@RequestBody TransacaoInsertDTO novaTransacao) {
         return transacaoService.insert(novaTransacao);
     }
@@ -64,13 +73,42 @@ public class TransacaoController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Atualiza uma transação existente")
+    @ApiResponse(
+        responseCode = "200",
+        description = "Transação atualizada com sucesso",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = TransacaoDTO.class)
+        )
+    )
+    @ApiResponse(
+        responseCode = "404",
+        description = "Transação não encontrada",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ErrorMessage.class)
+        )
+    )
     public TransacaoDTO update(
+        @Parameter(description = "ID da transação a ser atualizada", example = "10", required = true)
         @PathVariable long id, @RequestBody TransacaoInsertDTO novosDados) {
         return transacaoService.update(id, novosDados);
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Remove uma transação existente")
+    @ApiResponse(responseCode = "200", description = "Transação removida com sucesso")
+    @ApiResponse(
+        responseCode = "404",
+        description = "Transação não encontrada",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(implementation = ErrorMessage.class)
+        )
+    )
     public void remove(
+        @Parameter(description = "ID da transação a ser removida", example = "10", required = true)
         @PathVariable long id) {
         transacaoService.delete(id);
     }

@@ -28,10 +28,13 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
+            .requestMatchers("/").permitAll()
             .requestMatchers(HttpMethod.GET, "/public").permitAll()
             .requestMatchers(
                 "/swagger-ui.html",
                 "/swagger-ui/**",
+                "/v3/api-docs",
+                "/v3/api-docs/**",  
                 "/docs",
                 "/docs/**"
             ).permitAll()

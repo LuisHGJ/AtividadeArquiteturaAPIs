@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -18,6 +21,15 @@ public class AuthController {
     private TokenService tokenService;
 
     @PostMapping
+    @Operation(summary = "Autentica o usuário e gera um token JWT")
+    @ApiResponse(
+        responseCode = "200",
+        description = "Autenticação realizada com sucesso"
+    )
+    @ApiResponse(
+        responseCode = "401",
+        description = "Usuário ou senha inválidos"
+    )
     public String login(@RequestBody Usuario usuario) {
         UsernamePasswordAuthenticationToken tk =
             new UsernamePasswordAuthenticationToken(
