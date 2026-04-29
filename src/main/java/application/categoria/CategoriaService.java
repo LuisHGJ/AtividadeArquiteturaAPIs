@@ -41,10 +41,8 @@ public class CategoriaService {
             );
         }
 
-        resultado.get().setIdUsuario(dadosCategoria.idUsuario());
         resultado.get().setDescricao(dadosCategoria.descricao());
         resultado.get().setTipo(dadosCategoria.tipo());
-        resultado.get().setValor(dadosCategoria.valor());
 
         return new CategoriaDTO(categoriaRepo.save(resultado.get()));
     }

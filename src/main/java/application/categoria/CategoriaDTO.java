@@ -10,12 +10,6 @@ public record CategoriaDTO(
     )
     long id,
     @Schema(
-        description = "ID do usuário",
-        example = "1",
-        requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    Long idUsuario,
-    @Schema(
         description = "Descrição da categoria",
         example = "Salário",
         requiredMode = Schema.RequiredMode.REQUIRED
@@ -26,14 +20,8 @@ public record CategoriaDTO(
         example = "Entrada/Saída",
         requiredMode = Schema.RequiredMode.REQUIRED
     )
-    String tipo,
-    @Schema(
-        description = "Valor da categoria",
-        example = "5000.00",
-        requiredMode = Schema.RequiredMode.REQUIRED
-    )
-    Float valor) {
+    String tipo) {
     public CategoriaDTO(Categoria dados) {
-        this(dados.getId(), dados.getIdUsuario(), dados.getDescricao(), dados.getTipo(), dados.getValor());
+        this(dados.getId(), dados.getDescricao(), dados.getTipo());
     }
 }

@@ -1,0 +1,49 @@
+@url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGaWxtZXMgQVBJIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3Nzc0Mzc3OTl9.JYimYfQqFW1i78A5rmJ-WkKdSppNxF-oHfnqPc-VqZE
+
+POST {{url}}/transacoes
+Authorization:  Bearer {{token}}
+Content-Type: application/json
+
+{
+    "idUsuario": 1,
+    "idCategoria": 2,
+    "titulo": "Mercado abril",
+    "valor": 635.70
+}
+
+###
+POST {{url}}/transacoes
+Authorization:  Bearer {{token}}
+Content-Type: application/json
+
+{
+    "idUsuario": 1,
+    "idCategoria": 1,
+    "titulo": "Salário Abril",
+    "valor": 5780.70
+}
+
+###
+GET {{url}}/transacoes
+Authorization:  Bearer {{token}}
+
+###
+PUT {{url}}/transacoes/1
+Authorization:  Bearer {{token}}
+Content-Type: application/json
+
+{
+    "idUsuario": 1,
+    "idCategoria": 1,
+    "titulo": "Salario mês 2",
+    "valor": 600.00
+}
+
+###
+GET {{url}}/transacoes/1
+Authorization:  Bearer {{token}}
+
+###
+DELETE {{url}}/transacoes/1
+Authorization:  Bearer {{token}}

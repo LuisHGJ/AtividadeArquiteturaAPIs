@@ -20,33 +20,23 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
-    private Long idUsuario;
-    @Column(nullable = false)
     private String descricao;
     @Column(nullable = false)
     private String tipo;
-    @Column(nullable = false)
-    private Float valor;
 
-    public Categoria(Long idUsuario, String descricao, String tipo, Float valor) {
-        this.idUsuario = idUsuario;
+    public Categoria(String descricao, String tipo) {
         this.descricao = descricao;
         this.tipo = tipo;
-        this.valor = valor;
     }
 
     public Categoria(CategoriaDTO dados) {
         this.id = dados.id();
-        this.idUsuario = dados.idUsuario();
         this.descricao = dados.descricao();
         this.tipo = dados.tipo();
-        this.valor = dados.valor();
     }
 
     public Categoria(CategoriaInsertDTO dados) {
-        this.idUsuario = dados.idUsuario();
         this.descricao = dados.descricao();
         this.tipo = dados.tipo();
-        this.valor = dados.valor();
     }
 }
