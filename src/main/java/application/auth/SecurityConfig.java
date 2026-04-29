@@ -20,23 +20,28 @@ public class SecurityConfig {
     @Autowired
     private SecurityFilter securityFilter;
 
-    @Bean
+@Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .csrf(csrf -> csrf.disable())
         .sessionManagement(session -> session
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
+            .requestMatchers(HttpMethod.POST, "/auth").permitAll()
+            .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
             .requestMatchers("/").permitAll()
             .requestMatchers(HttpMethod.GET, "/public").permitAll()
             .requestMatchers(
                 "/swagger-ui.html",
                 "/swagger-ui/**",
+                "/swagger-ui/index.html",
+                "/swagger-ui/index.html/**",
                 "/v3/api-docs",
                 "/v3/api-docs/**",  
                 "/docs",
-                "/docs/**"
+                "/docs/**",
+                "/swagger-resources/**",
+                "/webjars/**"
             ).permitAll()
             .anyRequest().authenticated())
         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);

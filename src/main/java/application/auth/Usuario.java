@@ -25,6 +25,6 @@ public class Usuario {
     @Schema(example = "admin", description = "Nome de Usuário Único")
     private String usuario;
     @Column(nullable = false)
-    @Schema(example = "12345", description = "Senha de Usuário")
+    @Schema(example = "admin", description = "Senha de Usuário")
     private String senha;
 }

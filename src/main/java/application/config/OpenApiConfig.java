@@ -20,8 +20,14 @@ import io.swagger.v3.oas.annotations.servers.Server;
         contact = @Contact(
             name = "Luis Henrique",
             email = "luis.henrique@cps.sp.gov.br"
+        ),license = @License(
+            name = "MIT",
+            url = "https://opensource.org/license/mit"
         )
     ),
+    servers = {
+        @Server(url="/", description="Servidor"),
+    },
     security = @SecurityRequirement(name = "bearerAuth")
 )
 @SecurityScheme(

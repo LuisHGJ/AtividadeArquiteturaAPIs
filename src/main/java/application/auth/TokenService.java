@@ -26,7 +26,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(this.jwtConfig.getSecret());
 
             return JWT.create()
-                .withIssuer("Financeiro API")
+                .withIssuer("Filmes API")
                 .withSubject(usuario.getUsuario())
                 .withExpiresAt(this.expirationDate())
                 .sign(algorithm);
@@ -39,7 +39,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(this.jwtConfig.getSecret());
             return JWT.require(algorithm)
-                .withIssuer("Financeiro API")
+                .withIssuer("Filmes API")
                 .build()
                 .verify(token)
                 .getSubject();
